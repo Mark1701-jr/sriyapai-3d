@@ -513,7 +513,7 @@ k.strokeStyle='rgba(90,50,30,.5)';k.lineWidth=1;k.beginPath();k.moveTo(32,30);k.
 function mkO(front,side,sleeve,cuff,leg,thigh,skirt){const f=cvT(128,64,k=>{k.fillStyle=sleeve;k.fillRect(0,0,128,64);k.save();k.beginPath();k.rect(32,0,64,64);k.clip();k.translate(32,0);front(k);k.restore()});return{torso:f,arm:SKC.map(c=>armM(sleeve,c,cuff)),leg:SKC.map(c=>bands(LEG[leg](c),0)),shin:SKC.map(c=>bands(LEG[leg](c),.45)),thigh:std(thigh),skirt}}
 const OF={regB:mkO(TOR.regB,0xf6f7f9,'#f6f7f9',0,'short',0xb5a07a),regG:mkO(TOR.regG,0xf8f9fb,'#f8f9fb',0,'girl',0x1b2140,1),pe:mkO(TOR.pe,0xe2531c,'#e2531c',0,'track',0x1b2140),scout:mkO(TOR.scout,0xbfb08e,'#bfb08e',0,'scout',0xb8a886)},
 SPO=[['#e8431f',0xe8431f],['#e0508f',0xe0508f],['#1f3fb5',0x1f3fb5],['#2f8fe0',0x2f8fe0],['#4fb53a',0x4fb53a]].map(([c,n])=>mkO(sportT(c),n,c,1,'track',0x1b2140)),
-// Friday girls: three guide-style uniforms (blue shirt + navy skirt + beret, all blue + navy cap, all green + brimmed hat)
+// Thursday girls: three guide-style uniforms (blue shirt + navy skirt + beret, all blue + navy cap, all green + brimmed hat)
 gT=(base,scarf,dots,epa)=>k=>{k.fillStyle=base;k.fillRect(0,0,64,64);k.strokeStyle='rgba(0,0,0,.18)';k.strokeRect(8,24,16,14);k.strokeRect(40,24,16,14);if(epa){k.fillStyle=epa;k.fillRect(0,0,14,6);k.fillRect(50,0,14,6)}
 k.fillStyle=scarf;k.beginPath();k.moveTo(14,0);k.lineTo(32,26);k.lineTo(50,0);k.lineTo(41,0);k.lineTo(32,14);k.lineTo(23,0);k.closePath();k.fill();k.fillRect(28,22,8,12);
 if(dots){k.fillStyle='#fff';for(let i=0;i<7;i++)k.fillRect(19+i*4,3+Math.abs(3-i)*-1+i%2*3+4,2,2)}k.fillStyle='#fff';k.fillRect(10,18,10,3);k.fillStyle='#16181c';k.fillRect(0,58,64,6);k.fillStyle='#e8b923';k.fillRect(28,58,8,6)},
@@ -530,7 +530,7 @@ function stu(i,y,pl){const g=person(0xf6f7f9,0x1b2140,i,y);g.id=i;g.pl=pl;g.girl
 if(g.girl){const q=new THREE.Mesh(PG[1],std(0x1b1b1f));q.position.set(0,1.6,-.2);q.scale.set(.7,1.3,.7);g.add(q);g.skirt=new THREE.Mesh(PG[5],std(0x1b2140));g.skirt.position.set(0,.72,0);g.skirt.scale.z=.8;g.add(g.skirt);g.hat=new THREE.Mesh(PG[1],NVM);g.hat.position.set(0,1.87,0);g.hat.scale.set(1.2,.5,1.2);g.brim=new THREE.Mesh(HB,NVM);g.brim.position.set(0,1.85,0);g.hat.visible=g.brim.visible=false;g.add(g.hat,g.brim)}
 STU.push(g);return g}
 // Mon-Wed: regular uniform mixed with PE kit; Thu: scout; Fri: five sports-day colours
-function fit(g){if(dow<1||dow>5)return;const o=dow<4?(g.pl||g.id%3==2?OF.pe:g.girl?OF.regG:OF.regB):dow==4?OF.scout:g.girl?GG[(g.id>>1)%3]:SPO[g.id%5];
+function fit(g){if(dow<1||dow>5)return;const o=dow<4?(g.pl||g.id%3==2?OF.pe:g.girl?OF.regG:OF.regB):dow==4?(g.girl?GG[(g.id>>1)%3]:OF.scout):SPO[g.id%5];
 g.T.material=o.torso;g.Am.forEach(m=>m.material=o.arm[g.si]);
 if(g.Sh){g.Lm.forEach(m=>m.material=o.thigh);g.Sh.forEach(m=>m.material=o.shin[g.si])}else g.Lm.forEach(m=>m.material=o.leg[g.si]);
 if(g.skirt){g.skirt.visible=!!o.skirt;g.skirt.material=o.skirtM||NVM;g.hat.visible=!!o.hat;g.brim.visible=!!o.brim;if(o.hat)g.hat.material=g.brim.material=o.hat}}
