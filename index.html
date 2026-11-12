@@ -1439,9 +1439,9 @@ const sm=rp(sidT,w/2,1),sx=rp(sidT,d/2,1),t=new THREE.Mesh(BG,[sx,sx,std(wt),std
 const m=new THREE.Mesh(prism(W-.2,.9,D-.2),std(0x8f969c,{roughness:.5,metalness:.4}));m.position.set(cx,y+.08,cz);m.castShadow=true;g.add(pick11(m))};
 roof(-w/2-1.6,w/2-6,13.65,-dz-1.6,dz+1.6);roof(w/2-8,w/2+1.8,14.25,-dz-1.9,dz+1.9);add(g,10,.6,d-.4,wt,w/2-3,14,0)}
 BM[11]={x:X,z:Z,w,d,H:15.3};COL.push([X-(w/2+.4)/KS,X+(w/2+.4)/KS,Z-(dz+.4)/KS,Z+(dz+.4)/KS,1])}
-// ===== vegetable garden: 12 kinds of kitchen-garden plants in raised beds inside a milky-white net tent, in front of the brown house
-const VGX0=113,VGX1=130.5,VGZ0=103,VGZ1=107.3,VGG=new THREE.Group(),VPL=[];S.add(VGG);
-{const g=VGG,W=VGX1-VGX0,D=VGZ1-VGZ0,cx=(VGX0+VGX1)/2,cz=(VGZ0+VGZ1)/2,H=2.3,D0=120.9,D1=122.5,
+// ===== vegetable garden: 12 kinds of kitchen-garden plants in raised beds inside a milky-white net tent, between the brown house and building 1
+const VGX0=12.2,VGX1=22.6,VGZ0=92,VGZ1=98.8,VGG=new THREE.Group(),VPL=[];S.add(VGG);
+{const g=VGG,W=VGX1-VGX0,D=VGZ1-VGZ0,cx=(VGX0+VGX1)/2,cz=(VGZ0+VGZ1)/2,H=2.3,D0=16.6,D1=18.2,
 ad=(p,w,h,d,c,x,y,z,o)=>{const m=new THREE.Mesh(BG,typeof c=='number'?std(c,o):c);m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;p.add(m);return m},
 net=new THREE.MeshStandardMaterial({color:0xf3f5f0,transparent:true,opacity:.45,roughness:.9,side:THREE.DoubleSide,depthWrite:false}),fr=0xe9ecef;
 ad(g,W,.04,D,0x9c8b70,cx,.12,cz);
@@ -1449,7 +1449,7 @@ ad(g,W,.04,D,0x9c8b70,cx,.12,cz);
 [VGZ0,VGZ1].forEach(z=>{[[VGX0,D0],[D1,VGX1]].forEach(([a,b])=>{ad(g,b-a,H,.03,net,(a+b)/2,H/2,z);CB.push([a,b,z-.08,z+.08,1])});ad(g,D1-D0,H-2.1,.03,net,(D0+D1)/2,2.1+(H-2.1)/2,z);
 [D0,D1].forEach(x=>ad(g,.08,2.1,.08,fr,x,1.05,z));ad(g,D1-D0+.08,.08,.08,fr,(D0+D1)/2,2.1,z)});
 [VGX0,VGX1].forEach(x=>{ad(g,.03,H,D,net,x,H/2,cz);CB.push([x-.08,x+.08,VGZ0,VGZ1,1])});
-for(let x=VGX0;x<=VGX1+.01;x+=W/8){[VGZ0,VGZ1].forEach(z=>ad(g,.07,H,.07,fr,x,H/2,z));const rb=new THREE.Mesh(new THREE.TorusGeometry(D/2,.035,4,16,Math.PI),std(fr));rb.rotation.y=Math.PI/2;rb.scale.y=.5;rb.position.set(x,H,cz);g.add(rb)}
+for(let x=VGX0;x<=VGX1+.01;x+=W/5){[VGZ0,VGZ1].forEach(z=>ad(g,.07,H,.07,fr,x,H/2,z));const rb=new THREE.Mesh(new THREE.TorusGeometry(D/2,.035,4,16,Math.PI),std(fr));rb.rotation.y=Math.PI/2;rb.scale.y=.5;rb.position.set(x,H,cz);g.add(rb)}
 [VGZ0,VGZ1].forEach(z=>ad(g,W,.07,.07,fr,cx,H,z));
 {const rf=new THREE.Mesh(new THREE.CylinderGeometry(D/2,D/2,W,24,1,true,0,Math.PI),net);rf.rotation.z=Math.PI/2;const rg=new THREE.Group();rg.add(rf);rg.scale.y=.5;rg.position.set(cx,H,cz);g.add(rg);
 [VGX0,VGX1].forEach(x=>{const c=new THREE.Mesh(new THREE.CircleGeometry(D/2,24,0,Math.PI),net);c.rotation.y=Math.PI/2;const cg=new THREE.Group();cg.add(c);cg.scale.y=.5;cg.position.set(x,H,cz);g.add(cg)})}
@@ -1471,11 +1471,11 @@ KIND=[
 ['ผักกาดหอม',(p,x,z)=>{mm(p,SPH,0x9fd36a,x,.4,z,.14,.09,.14);mm(p,SPH,0xb9e283,x,.47,z,.07)}],
 ['ต้นหอม',(p,x,z)=>{for(let i=0;i<5;i++)mm(p,CYL,0x5fae4a,x-.06+i*.03,.47,z+(i%2?.03:-.03),.012,.35,.012)}],
 ['ตะไคร้',(p,x,z)=>{for(let i=0;i<4;i++){const c=mm(p,CON,0x9cc46a,x+(i%2?.05:-.05),.7,z+(i<2?.04:-.04),.05,.8,.05);c.rotation.z=(i-1.5)*.12}}]];
-const beds=[[113.5,120.5],[123,130]],rows=[[103.5,104.65],[105.75,106.9]];let k=0;
+const beds=[[12.7,16.4],[18.4,22.1]],rows=[[92.5,94.5],[96.3,98.3]];let k=0;
 beds.forEach(([x0,x1])=>rows.forEach(([z0,z1])=>{ad(g,x1-x0,.3,z1-z0,0x9a4b2a,(x0+x1)/2,.15,(z0+z1)/2);ad(g,x1-x0-.1,.02,z1-z0-.1,0x5a3e2b,(x0+x1)/2,.3,(z0+z1)/2);
 const L=(x1-x0)/3;for(let j=0;j<3;j++,k++){const a=x0+j*L,b=a+L,[nm,fn]=KIND[k],p=new THREE.Group();g.add(p);const vine=nm=='ถั่วฝักยาว'||nm=='แตงกวา',zc=(z0+z1)/2;
-if(vine)trellis(p,a,b,zc);const nx=vine?5:4,nz=vine?1:2;for(let ix=0;ix<nx;ix++)for(let iz=0;iz<nz;iz++)fn(p,a+(ix+.5)*L/nx,nz==1?zc:z0+(iz+.5)*(z1-z0)/nz);
-const sgz=z0<105?z1+.03:z0-.03,sg=new THREE.Mesh(new THREE.PlaneGeometry(.8,.22),sgn(nm,'#2f8f5f'));sg.position.set((a+b)/2,.48,sgz);if(z0>105)sg.rotation.y=Math.PI;g.add(sg);mm(g,CYL,0x8a6a3a,(a+b)/2,.3,sgz,.012,.36,.012);
+if(vine)trellis(p,a,b,zc);const nx=3,nz=vine?1:2;for(let ix=0;ix<nx;ix++)for(let iz=0;iz<nz;iz++)fn(p,a+(ix+.5)*L/nx,nz==1?zc:z0+(iz+.5)*(z1-z0)/nz);
+const sgz=z0<cz?z1+.03:z0-.03,sg=new THREE.Mesh(new THREE.PlaneGeometry(.75,.21),sgn(nm,'#2f8f5f'));sg.position.set((a+b)/2,.48,sgz);if(z0>cz)sg.rotation.y=Math.PI;g.add(sg);mm(g,CYL,0x8a6a3a,(a+b)/2,.3,sgz,.012,.36,.012);
 VPL.push({n:nm,x:(a+b)/2,z:zc,g:p,t:-1})}}));
 COL.push([VGX0,VGX1,VGZ0,VGZ1,1])}
 // ===== building 6: library on a raised floor. Steps + covered walk on the north side (towards dome 9).
@@ -2230,7 +2230,7 @@ function openDlg(){DLG.on=true;$('dlg').style.display='block';const m=nMood();ne
 var closeDlg=function(){DLG.on=false;$('dlg').style.display='none';LAB='~'}
 $('dlx').onclick=closeDlg;
 // ===== ครูวิรุฬ: looks after the kitchen garden and teaches about vegetables; harvesting gives vegetables for your bag
-const WX=119.4,WZ=105.2,WIR=person(0xc9b08a,0x9a8a68,3,.1);WIR.position.set(WX,.1,WZ);WIR.rotation.y=Math.PI/2;WIR.scale.setScalar(1.08);WIR.jump=0;
+const WX=15.4,WZ=95.4,WIR=person(0xc9b08a,0x9a8a68,3,.1);WIR.position.set(WX,.1,WZ);WIR.rotation.y=Math.PI/2;WIR.scale.setScalar(1.08);WIR.jump=0;
 {const b=new THREE.Mesh(BG,std(0xc0262e));b.scale.set(.12,.12,.03);b.position.set(-.33,1.3,.12);WIR.add(b);const sc=new THREE.Mesh(BG,std(0x6b4a2a));sc.scale.set(.3,.12,.06);sc.position.set(0,1.42,.17);WIR.add(sc)}
 const WTX=document.createElement('canvas');WTX.width=320;WTX.height=72;const WTT=new THREE.CanvasTexture(WTX),WSP=new THREE.Sprite(new THREE.SpriteMaterial({map:WTT,depthWrite:false}));WSP.scale.set(1.9/KS,.43,1);WSP.position.set(WX,2.6,WZ);S.add(WSP);
 const wirUI=()=>{const k=WTX.getContext('2d');k.clearRect(0,0,320,72);k.fillStyle='rgba(20,60,30,.78)';k.fillRect(6,6,308,60);drawT(k,'ครูวิรุฬ · ผักสวนครัว',160,38,290,32,600,'#fff',.45);WTT.needsUpdate=true};RD.push(wirUI);wirUI();
